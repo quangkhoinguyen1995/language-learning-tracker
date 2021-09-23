@@ -24,5 +24,21 @@ namespace Time_tracker
         {
             InitializeComponent();
         }
+
+        private void DiaryButton_Click (object sender, RoutedEventArgs e)
+        {
+            DiaryWindow diaryWindow = new DiaryWindow();
+
+            //Open the window
+            diaryWindow.Show();
+        }
+
+        private void ReportButton_Click (object sender, RoutedEventArgs e)
+        {
+            ReportWindow reportWindow = new ReportWindow();
+
+            //Open the window
+            reportWindow.Show();
+        }
     }
 }
