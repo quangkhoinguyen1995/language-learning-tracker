@@ -36,16 +36,16 @@
         </Grid.ColumnDefinitions>
 
         <TextBlock Grid.Row="1" >Date</TextBlock>
-        <TextBox Grid.Row="2" />
+        <TextBox Grid.Row="2" Grid.ColumnSpan="2" />
 
         <TextBlock Grid.Row="4" >Activity</TextBlock>
-        <TextBox Grid.Row="5" />
+        <TextBox Grid.Row="5" Grid.ColumnSpan="2" />
 
         <TextBlock Grid.Row="7" >Name</TextBlock>
-        <TextBox Grid.Row="8" />
+        <TextBox Grid.Row="8" Grid.ColumnSpan="2" />
 
         <TextBlock Grid.Row="10">Time taken (in hours)</TextBlock>
-        <TextBox Grid.Row="11" />
+        <TextBox Grid.Row="11" Grid.ColumnSpan="2" />
 
         <TextBlock Grid.Row="13" Grid.Column="0">Started hour (in eReader, etc.)</TextBlock>
         <TextBox Grid.Row="14" Grid.Column="0" />
