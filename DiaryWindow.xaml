@@ -5,8 +5,56 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Time_tracker"
         mc:Ignorable="d"
-        Title="DiaryWindow" Height="450" Width="800">
+        Title="DiaryWindow" Height="480" Width="480">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="1" >Date</TextBlock>
+        <TextBox Grid.Row="2" />
+
+        <TextBlock Grid.Row="4" >Activity</TextBlock>
+        <TextBox Grid.Row="5" />
+
+        <TextBlock Grid.Row="7" >Name</TextBlock>
+        <TextBox Grid.Row="8" />
+
+        <TextBlock Grid.Row="10">Time taken (in hours)</TextBlock>
+        <TextBox Grid.Row="11" />
+
+        <TextBlock Grid.Row="13" Grid.Column="0">Started hour (in eReader, etc.)</TextBlock>
+        <TextBox Grid.Row="14" Grid.Column="0" />
+
+        <TextBlock Grid.Row="13" Grid.Column="1">Ended hour (in eReader, etc.)</TextBlock>
+        <TextBox Grid.Row="14" Grid.Column="1" />
+
+        <Button Grid.Row="19" Grid.Column="0">Add to diary</Button>
+        <Button Grid.Row="19" Grid.Column="1">Cancel</Button>
+
     </Grid>
 </Window>
