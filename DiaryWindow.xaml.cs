@@ -19,9 +19,19 @@ namespace Time_tracker
     /// </summary>
     public partial class DiaryWindow : Window
     {
+        private List<string> Activities_List = new List<string>() { "Study", "Read", "Watch", "Play" };
+        private List<string> Status_List = new List<string>() { "Started", "In progress", "Stalled", "Finished" };
         public DiaryWindow()
         {
             InitializeComponent();
+            Activity_Date.SelectedDate = DateTime.Today;
+            Activity_Type.ItemsSource = Activities_List;
+            Status_Type.ItemsSource = Status_List;
+        }
+
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

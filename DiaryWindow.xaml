@@ -36,24 +36,39 @@
         </Grid.ColumnDefinitions>
 
         <TextBlock Grid.Row="1" >Date</TextBlock>
-        <TextBox Grid.Row="2" Grid.ColumnSpan="2" />
+        <DatePicker Name="Activity_Date" SelectedDate="" Grid.Row="2" Grid.ColumnSpan="2" />
 
-        <TextBlock Grid.Row="4" >Activity</TextBlock>
-        <TextBox Grid.Row="5" Grid.ColumnSpan="2" />
+        <TextBlock Grid.Row="4" >Activity Type</TextBlock>
+        <ComboBox Name="Activity_Type" Grid.Row="5">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding}" />
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
 
-        <TextBlock Grid.Row="7" >Name</TextBlock>
-        <TextBox Grid.Row="8" Grid.ColumnSpan="2" />
+        <TextBlock Grid.Row="7" >Media Name</TextBlock>
+        <TextBox Name="Media_Name" Grid.Row="8" Grid.ColumnSpan="2" />
 
         <TextBlock Grid.Row="10">Time taken (in hours)</TextBlock>
-        <TextBox Grid.Row="11" Grid.ColumnSpan="2" />
+        <TextBox Name="Time_taken" Grid.Row="11" Grid.ColumnSpan="2" />
 
-        <TextBlock Grid.Row="13" Grid.Column="0">Started hour (in eReader, etc.)</TextBlock>
-        <TextBox Grid.Row="14" Grid.Column="0" />
+        <TextBlock Grid.Row="13">Status</TextBlock>
+        <ComboBox Name="Status_Type" Grid.Row="14">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding}" />
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
 
-        <TextBlock Grid.Row="13" Grid.Column="1">Ended hour (in eReader, etc.)</TextBlock>
-        <TextBox Grid.Row="14" Grid.Column="1" />
+        <TextBlock Grid.Row="16" Grid.Column="0">Started hour (in eReader, etc.)</TextBlock>
+        <TextBox Grid.Row="17" Grid.Column="0" />
 
-        <Button Grid.Row="19" Grid.Column="0">Add to diary</Button>
+        <TextBlock Grid.Row="16" Grid.Column="1">Ended hour (in eReader, etc.)</TextBlock>
+        <TextBox Name="Time_taken_Update" Grid.Row="17" Grid.Column="1" />
+
+        <Button Grid.Row="19" Grid.Column="0" Click="AddButton_Click">Add to diary</Button>
         <Button Grid.Row="19" Grid.Column="1" Click="CancelButton_Click">Cancel</Button>
 
     </Grid>
