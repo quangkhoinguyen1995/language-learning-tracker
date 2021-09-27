@@ -23,5 +23,11 @@ namespace Time_tracker
         {
             InitializeComponent();
         }
+
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            //Close the diary window
+            this.Close();
+        }
     }
 }

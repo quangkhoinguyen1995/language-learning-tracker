@@ -54,7 +54,7 @@
         <TextBox Grid.Row="14" Grid.Column="1" />
 
         <Button Grid.Row="19" Grid.Column="0">Add to diary</Button>
-        <Button Grid.Row="19" Grid.Column="1">Cancel</Button>
+        <Button Grid.Row="19" Grid.Column="1" Click="CancelButton_Click">Cancel</Button>
 
     </Grid>
 </Window>
