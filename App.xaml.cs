@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace Time_tracker
+namespace language_learning_tracker
 {
     /// <summary>
     /// Interaction logic for App.xaml

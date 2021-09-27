@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Time_tracker
+namespace language_learning_tracker
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

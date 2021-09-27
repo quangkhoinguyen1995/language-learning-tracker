@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Time_tracker
+namespace language_learning_tracker
 {
     /// <summary>
     /// Interaction logic for DiaryWindow.xaml
