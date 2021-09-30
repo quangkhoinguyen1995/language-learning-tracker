@@ -40,5 +40,13 @@ namespace language_learning_tracker
             //Open the window
             reportWindow.Show();
         }
+
+        private void AddLanguageButton_Click(object sender, RoutedEventArgs e)
+        {
+            AddLanguageWindow addLanguageWindow = new AddLanguageWindow();
+
+            //Open the window
+            addLanguageWindow.Show();
+        }
     }
 }

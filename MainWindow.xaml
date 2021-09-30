@@ -13,6 +13,8 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="2*" />
             <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -21,7 +23,8 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Button Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" Click="DiaryButton_Click">Diary</Button>
-        <Button Grid.Column="3" Grid.Row="2" VerticalAlignment="Center" Click="ReportButton_Click">Report</Button>
+        <Button Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" Click="AddLanguageButton_Click">Add language</Button>
+        <Button Grid.Column="3" Grid.Row="2" VerticalAlignment="Center" Click="DiaryButton_Click">Diary</Button>
+        <Button Grid.Column="5" Grid.Row="2" VerticalAlignment="Center" Click="ReportButton_Click">Report</Button>
     </Grid>
 </Window>
