@@ -45,6 +45,8 @@ namespace language_learning_tracker
                     sw.WriteLine(JSONLanguage.ToString());
                     sw.Close();
                 }
+
+                File.CreateText(LanguageDataPath).Close();
             } 
             else if (File.Exists(LanguageListPath))
             {
@@ -53,6 +55,7 @@ namespace language_learning_tracker
                     sw.WriteLine(JSONLanguage.ToString());
                     sw.Close();
                 }
+                File.CreateText(LanguageDataPath).Close();
             }
 
             MessageBox.Show(LanguageName + " has been successfully added!");
