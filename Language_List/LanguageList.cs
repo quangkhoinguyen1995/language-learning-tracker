@@ -8,8 +8,8 @@ namespace language_learning_tracker.Languages_List
 {
     class LanguageList
     {
-        public string LanguageName;
-        public string DataFilePath;
+        public string LanguageName { get; set; }
+        public string DataFilePath { get; set; }
         public LanguageList(string langName, string langDataFilePath)
         {
             LanguageName = langName;

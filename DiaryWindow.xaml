@@ -35,6 +35,15 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
+        <TextBlock Grid.Row="0" Grid.Column="0">Language</TextBlock>
+        <ComboBox Name="Language_Name" Grid.Row="0" Grid.Column="1">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
         <TextBlock Grid.Row="1" >Date</TextBlock>
         <DatePicker Name="Activity_Date" SelectedDate="" Grid.Row="2" Grid.ColumnSpan="2" />
 

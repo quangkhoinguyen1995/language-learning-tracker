@@ -34,12 +34,14 @@ namespace language_learning_tracker
             LanguageList newLanguage = new LanguageList(LanguageName, LanguageDataPath);
             string LanguageListPath = @".\Language_List\LanguageList.json";
 
-            string JSONLanguage = JsonConvert.SerializeObject(newLanguage);
-
             if(!File.Exists(LanguageListPath))
             {
                 System.IO.Directory.CreateDirectory(@".\Language_List");
                 System.IO.Directory.CreateDirectory(@".\Language_Data");
+                List<LanguageList> languageLists = new List<LanguageList>();
+                languageLists.Add(newLanguage);
+                string JSONLanguage = JsonConvert.SerializeObject(languageLists);
+
                 using (StreamWriter sw = File.CreateText(LanguageListPath))
                 {
                     sw.WriteLine(JSONLanguage.ToString());
@@ -50,8 +52,26 @@ namespace language_learning_tracker
             } 
             else if (File.Exists(LanguageListPath))
             {
-                using (StreamWriter sw = File.AppendText(LanguageListPath))
+                List<LanguageList> languageLists = new List<LanguageList>();
+                using (StreamReader sr = new StreamReader(LanguageListPath))
                 {
+                    string languageListJSON = sr.ReadToEnd();
+                    languageLists = JsonConvert.DeserializeObject<List<LanguageList>>(languageListJSON);
+                    sr.Close();
+                }
+                foreach (LanguageList lang in languageLists)
+                {
+                    if (lang.LanguageName == newLanguage.LanguageName)
+                    {
+                        MessageBox.Show("Language is already added!");
+                        return;
+                    }
+                }
+
+                languageLists.Add(newLanguage);
+                using (StreamWriter sw = File.CreateText(LanguageListPath))
+                {
+                    string JSONLanguage = JsonConvert.SerializeObject(languageLists);
                     sw.WriteLine(JSONLanguage.ToString());
                     sw.Close();
                 }
