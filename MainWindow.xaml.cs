@@ -24,6 +24,12 @@ namespace language_learning_tracker
         public MainWindow()
         {
             InitializeComponent();
+            InitializeDb();
+        }
+
+        private void InitializeDb()
+        {
+
         }
 
         private void DiaryButton_Click (object sender, RoutedEventArgs e)
