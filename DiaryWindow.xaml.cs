@@ -12,9 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.IO;
-using language_learning_tracker.Languages_List;
+using Microsoft.EntityFrameworkCore.Sqlite;
 using language_learning_tracker.Language_Data;
-using Newtonsoft.Json;
 
 namespace language_learning_tracker
 {
@@ -44,13 +43,8 @@ namespace language_learning_tracker
 
         private List<LanguageList> Initialize_LanguageList()
         {
-            string languageListPath = @".\Language_List\LanguageList.json";
-            using (StreamReader sr = new StreamReader(languageListPath))
-            {
-                string languageListJSON = sr.ReadToEnd();
-                List<LanguageList> languageLists = JsonConvert.DeserializeObject<List<LanguageList>>(languageListJSON);
-                return languageLists;
-            }
+            List<LanguageList> ll = new List<LanguageList>();
+            return ll;
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)

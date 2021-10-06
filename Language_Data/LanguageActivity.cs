@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace language_learning_tracker.Language_Data
 {
-    class LanguageData
+    public class LanguageActivity
     {
+        public DateTime ActivityDate;
+        public string ActivityType;
+        public string MediaName;
+        public TimeSpan TimeTaken;
     }
 }
