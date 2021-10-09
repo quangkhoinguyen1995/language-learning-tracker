@@ -13,23 +13,30 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.EntityFrameworkCore.Sqlite;
+using language_learning_tracker.Language_Data;
+using System.ComponentModel;
 
 namespace language_learning_tracker
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    /// 
     public partial class MainWindow : Window
     {
+        private LanguageDataDbContext LanguageDataContext;
         public MainWindow()
         {
             InitializeComponent();
-            InitializeDb();
+            LanguageDataContext = InitializeDb();
         }
 
-        private void InitializeDb()
+        private LanguageDataDbContext InitializeDb()
         {
-
+            string path = @"./Language_Data/Language_Data.db";
+            LanguageDataDbContext context = new LanguageDataDbContext(path);
+            context.Database.EnsureCreated();
+            return context;
         }
 
         private void DiaryButton_Click (object sender, RoutedEventArgs e)
@@ -54,6 +61,12 @@ namespace language_learning_tracker
 
             //Open the window
             addLanguageWindow.Show();
+        }
+
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            LanguageDataContext.Dispose();
+            base.OnClosing(e);
         }
     }
 }
