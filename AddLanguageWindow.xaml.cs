@@ -12,7 +12,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Microsoft.EntityFrameworkCore.Sqlite;
 using language_learning_tracker.Language_Data;
+using System.ComponentModel;
 
 namespace language_learning_tracker
 {
@@ -21,20 +23,41 @@ namespace language_learning_tracker
     /// </summary>
     public partial class AddLanguageWindow : Window
     {
+        LanguageDataDbContext LanguageDataContext;
         public AddLanguageWindow()
         {
             InitializeComponent();
+            LanguageDataContext = new LanguageDataDbContext();
         }
 
         private void AddLanguageButton_Click(object sender, RoutedEventArgs e)
         {
             string LanguageName = Language_Name.Text;
-            
+
+            var langExist = LanguageDataContext.Language.Where(s => s.LanguageName == LanguageName).FirstOrDefault();
+
+            if (langExist == null)
+            {
+                LanguageList lang = new LanguageList(LanguageName);
+                LanguageDataContext.Add(lang);
+                LanguageDataContext.SaveChanges();
+                MessageBox.Show(LanguageName + " is sucessfully added!");
+            }
+            else
+            {
+                MessageBox.Show(LanguageName + " is already in database!");
+            }
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            LanguageDataContext.Dispose();
+            base.OnClosing(e);
         }
     }
 }

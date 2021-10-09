@@ -28,15 +28,14 @@ namespace language_learning_tracker
         public MainWindow()
         {
             InitializeComponent();
-            LanguageDataContext = InitializeDb();
+            InitializeDb();
         }
 
-        private LanguageDataDbContext InitializeDb()
+        private void InitializeDb()
         {
-            string path = @"./Language_Data/Language_Data.db";
-            LanguageDataDbContext context = new LanguageDataDbContext(path);
-            context.Database.EnsureCreated();
-            return context;
+            LanguageDataContext = new LanguageDataDbContext();
+            LanguageDataContext.Database.EnsureCreated();
+            LanguageDataContext.Dispose();
         }
 
         private void DiaryButton_Click (object sender, RoutedEventArgs e)
@@ -61,12 +60,6 @@ namespace language_learning_tracker
 
             //Open the window
             addLanguageWindow.Show();
-        }
-
-        protected override void OnClosing(CancelEventArgs e)
-        {
-            LanguageDataContext.Dispose();
-            base.OnClosing(e);
         }
     }
 }

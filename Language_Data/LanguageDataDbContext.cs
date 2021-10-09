@@ -14,9 +14,9 @@ namespace language_learning_tracker.Language_Data
 
         public string DbPath { get; private set; }
 
-        public LanguageDataDbContext(string path)
+        public LanguageDataDbContext()
         {
-            DbPath = path;
+            DbPath = @"./Language_Data/Language_Data.db";
         }
 
         protected override void OnConfiguring (DbContextOptionsBuilder optionsBuilder)
