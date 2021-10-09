@@ -20,7 +20,6 @@ namespace language_learning_tracker.Language_Data
         public virtual LanguageList Language { get; set; }
 
         public int MediaID { get; set; }
-        public virtual ICollection<ImmersionMedia> ImmersionMediaDB { get; private set; }
-        = new ObservableCollection<ImmersionMedia>();
+        public virtual ImmersionMedia ImmersionMaterial { get; set; }
     }
 }

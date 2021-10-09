@@ -25,7 +25,7 @@ namespace language_learning_tracker
     {
         private List<string> Activities_List = new List<string>() { "Study", "Read", "Watch", "Play" };
         private List<string> Status_List = new List<string>() { "Started", "In progress", "Stalled", "Finished" };
-        private List<string> Language_List;
+        private List<LanguageList> Language_List;
         private LanguageDataDbContext LanguageDataContext;
         public DiaryWindow()
         {
@@ -37,9 +37,9 @@ namespace language_learning_tracker
             Language_List = Initialize_LanguageList();
         }
 
-        private List<string> Initialize_LanguageList()
+        private List<LanguageList> Initialize_LanguageList()
         {
-            List<string> Language_List = new List<string>();
+            List<LanguageList> Language_List = new List<LanguageList>();
             return Language_List;
         }
 
