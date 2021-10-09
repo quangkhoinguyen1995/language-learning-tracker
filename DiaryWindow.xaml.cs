@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using System.IO;
 using Microsoft.EntityFrameworkCore.Sqlite;
 using language_learning_tracker.Language_Data;
+using System.ComponentModel;
 
 namespace language_learning_tracker
 {
@@ -24,27 +25,22 @@ namespace language_learning_tracker
     {
         private List<string> Activities_List = new List<string>() { "Study", "Read", "Watch", "Play" };
         private List<string> Status_List = new List<string>() { "Started", "In progress", "Stalled", "Finished" };
-        private List<LanguageList> Language_List;
-        private List<string> Language_Name_List = new List<string>();
+        private List<string> Language_List;
+        private LanguageDataDbContext LanguageDataContext;
         public DiaryWindow()
         {
             InitializeComponent();
+            LanguageDataContext = new LanguageDataDbContext();
             Activity_Date.SelectedDate = DateTime.Today;
             Activity_Type.ItemsSource = Activities_List;
             Status_Type.ItemsSource = Status_List;
             Language_List = Initialize_LanguageList();
-            
-            foreach (LanguageList lang in Language_List)
-            {
-                Language_Name_List.Add(lang.LanguageName);
-            }
-            Language_Name.ItemsSource = Language_Name_List;
         }
 
-        private List<LanguageList> Initialize_LanguageList()
+        private List<string> Initialize_LanguageList()
         {
-            List<LanguageList> ll = new List<LanguageList>();
-            return ll;
+            List<string> Language_List = new List<string>();
+            return Language_List;
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
@@ -56,6 +52,12 @@ namespace language_learning_tracker
         {
             //Close the diary window
             this.Close();
+        }
+
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            LanguageDataContext.Dispose();
+            base.OnClosing(e);
         }
     }
 }

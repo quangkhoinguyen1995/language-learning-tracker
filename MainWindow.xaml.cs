@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,16 +25,19 @@ namespace language_learning_tracker
     /// 
     public partial class MainWindow : Window
     {
-        private LanguageDataDbContext LanguageDataContext;
         public MainWindow()
         {
             InitializeComponent();
             InitializeDb();
         }
-
         private void InitializeDb()
         {
-            LanguageDataContext = new LanguageDataDbContext();
+            string path = @".\Language_Data";
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+            LanguageDataDbContext LanguageDataContext = new LanguageDataDbContext();
             LanguageDataContext.Database.EnsureCreated();
             LanguageDataContext.Dispose();
         }

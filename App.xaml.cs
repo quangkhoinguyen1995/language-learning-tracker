@@ -5,6 +5,8 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using System.IO;
+using language_learning_tracker.Language_Data;
 
 namespace language_learning_tracker
 {
