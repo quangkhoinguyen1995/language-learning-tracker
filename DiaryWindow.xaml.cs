@@ -34,18 +34,21 @@ namespace language_learning_tracker
             Activity_Date.SelectedDate = DateTime.Today;
             Activity_Type.ItemsSource = Activities_List;
             Status_Type.ItemsSource = Status_List;
-            Language_List = Initialize_LanguageList();
-        }
-
-        private List<LanguageList> Initialize_LanguageList()
-        {
-            List<LanguageList> Language_List = new List<LanguageList>();
-            return Language_List;
+            Language_List = LanguageDataContext.Language.ToList();
+            Language_Name.ItemsSource = Language_List.Select(s => s.LanguageName);
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
+            LanguageActivity activity = new LanguageActivity();
+            activity.ActivityDate = Activity_Date.SelectedDate.GetValueOrDefault();
+            activity.ActivityType = Activity_Type.SelectedItem.ToString();
+            if (Language_Name.SelectedIndex == -1)
+                MessageBox.Show("Please select a language!");
+            else
+                activity.LanguageID = Language_Name.SelectedIndex;
 
+            
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

@@ -44,10 +44,19 @@ namespace language_learning_tracker
 
         private void DiaryButton_Click (object sender, RoutedEventArgs e)
         {
-            DiaryWindow diaryWindow = new DiaryWindow();
+            LanguageDataDbContext LanguageDataContext = new LanguageDataDbContext();
+            int langCount = LanguageDataContext.Language.Count();
+            LanguageDataContext.Dispose();
 
-            //Open the window
-            diaryWindow.Show();
+            if (langCount == 0)
+                MessageBox.Show("Language data is empty! Add language before proceeding!");
+            else
+            {
+                DiaryWindow diaryWindow = new DiaryWindow();
+
+                //Open the window
+                diaryWindow.Show();
+            }
         }
 
         private void ReportButton_Click (object sender, RoutedEventArgs e)

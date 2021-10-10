@@ -20,6 +20,15 @@ namespace language_learning_tracker.Language_Data
         public string MediaType { get; set; }
         public TimeSpan TotalImmersionTimes { get; set; }
 
+        public ImmersionMedia() { }
+        public ImmersionMedia(string name)
+        {
+            MediaName = name;
+        }
+
+        public int LanguageID { get; set; }
+        public virtual LanguageList Language { get; set; }
+
         public virtual ICollection<LanguageActivity> LanguageActivities { get; private set; }
         = new ObservableCollection<LanguageActivity>();
     }
