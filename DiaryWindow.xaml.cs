@@ -46,8 +46,10 @@ namespace language_learning_tracker
             if (Language_Name.SelectedIndex == -1)
                 MessageBox.Show("Please select a language!");
             else
-                activity.LanguageID = Language_Name.SelectedIndex;
-
+            {
+                string selectedLanguage = Language_Name.SelectedItem.ToString();
+                activity.LanguageID = LanguageDataContext.Language.Where(l => l.LanguageName == selectedLanguage).Select(p => p.LanguageID).Single();
+            }
             
         }
 
