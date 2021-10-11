@@ -98,6 +98,7 @@ namespace language_learning_tracker
                 requestedMedia.LanguageID = LanguageID;
                 requestedMedia.TotalImmersionTimes = timeTaken;
                 LanguageDataContext.Add(requestedMedia);
+                LanguageDataContext.SaveChanges();
                 return requestedMedia;
             }
         }
