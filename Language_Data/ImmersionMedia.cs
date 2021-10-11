@@ -18,6 +18,7 @@ namespace language_learning_tracker.Language_Data
         public string MediaName { get; set; }
         [Required]
         public string MediaType { get; set; }
+        public string MediaStatus { get; set; }
         public TimeSpan TotalImmersionTimes { get; set; }
 
         public ImmersionMedia() { }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -68,13 +69,32 @@ namespace language_learning_tracker
                 return;
             }
 
-            TimeSpan timeTaken = TimeSpan.FromHours(Double.Parse(Time_taken.Text));
-            activity.TimeTaken = timeTaken;
+            string TimeTakenVal = Time_taken.Text;
+            TimeSpan timeTaken;
+
+            if (checkValidTimeTakenVal(TimeTakenVal) == false || TimeTakenVal.Length == 0)
+            {
+                MessageBox.Show("Please enter only integer or floating point number in Time Taken");
+                return;
+            }
+            else
+            {
+                timeTaken = TimeSpan.FromHours(Double.Parse(TimeTakenVal));
+                activity.TimeTaken = timeTaken;
+            }
+            
             ImmersionMedia iMedia = CheckOrCreateMedia(Media_Name.Text, Media_Type.Text, activity.LanguageID, timeTaken);
             activity.MediaID = iMedia.MediaID;
             LanguageDataContext.Add(activity);
             LanguageDataContext.SaveChanges();
             MessageBox.Show("Activity sucessfully added!");
+        }
+
+        private bool checkValidTimeTakenVal (string TimeTakenVal)
+        {
+            string pattern = @"[.0123456789]";
+            Regex rgx = new Regex(pattern);
+            return rgx.IsMatch(TimeTakenVal);
         }
 
         private ImmersionMedia CheckOrCreateMedia (string Media_Name, string Media_Type, int LanguageID, TimeSpan timeTaken)
@@ -88,6 +108,14 @@ namespace language_learning_tracker
                 ImmersionMedia requestedMedia = LanguageDataContext.ImmersionMediaDB.Where(
                     m => m.MediaName == Media_Name && m.MediaType == Media_Type && m.LanguageID == LanguageID).FirstOrDefault();
                 requestedMedia.TotalImmersionTimes += timeTaken;
+
+                if (Status_Type.SelectedIndex == -1 && requestedMedia.MediaStatus.Length == 0)
+                    requestedMedia.MediaStatus = "";
+                else if (Status_Type.SelectedIndex == -1 && requestedMedia.MediaStatus.Length != 0)
+                    requestedMedia.MediaStatus = requestedMedia.MediaStatus;
+                else
+                    requestedMedia.MediaStatus = Status_Type.SelectedItem.ToString();
+
                 LanguageDataContext.Update(requestedMedia);
                 return requestedMedia;
             }
@@ -97,6 +125,10 @@ namespace language_learning_tracker
                 requestedMedia.MediaType = Media_Type;
                 requestedMedia.LanguageID = LanguageID;
                 requestedMedia.TotalImmersionTimes = timeTaken;
+
+                if (Status_Type.SelectedIndex != -1)
+                    requestedMedia.MediaStatus = Status_Type.SelectedItem.ToString();
+
                 LanguageDataContext.Add(requestedMedia);
                 LanguageDataContext.SaveChanges();
                 return requestedMedia;
