@@ -7,6 +7,39 @@
         mc:Ignorable="d"
         Title="ReportWindow" Height="480" Width="480">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="30" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="10"/>
+        </Grid.ColumnDefinitions>
         
+        <ScrollBar Grid.Column="3" Grid.Row="2"/>
+
+        <TextBox Grid.Row="0" Grid.Column="1">Language</TextBox>
+        <ComboBox Name="Language_Name"  Grid.Row="0" Grid.Column="1">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding}" />
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <TextBox Grid.Row="1" Grid.Column="1">Start Date</TextBox>
+        <DatePicker Name="Start_Date" SelectedDate="" Grid.Row="1" Grid.Column="1" />
+
+        <TextBox Grid.Row="1" Grid.Column="2">End Date</TextBox>
+        <DatePicker Name="End_Date" SelectedDate="" Grid.Row="1" Grid.Column="2" />
+
+
+
+        <Button Grid.Row="3" Grid.Column="1" Click="ViewReportButton_Click">View Report</Button>
+        <Button Grid.Row="3" Grid.Column="2" Click="CancelButton_Click">Cancel</Button>
     </Grid>
 </Window>
