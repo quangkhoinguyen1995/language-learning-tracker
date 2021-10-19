@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:language_learning_tracker"
         mc:Ignorable="d"
-        Title="ReportWindow" Height="480" Width="480">
+        Title="ReportWindow" Height="480" Width="640">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30" />
@@ -37,7 +37,7 @@
         <TextBox Grid.Row="1" Grid.Column="2">End Date</TextBox>
         <DatePicker Name="End_Date" SelectedDate="" Grid.Row="1" Grid.Column="2" />
 
-
+        <DataGrid Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Name="Language_DataGrid" />
 
         <Button Grid.Row="3" Grid.Column="1" Click="ViewReportButton_Click">View Report</Button>
         <Button Grid.Row="3" Grid.Column="2" Click="CancelButton_Click">Cancel</Button>
