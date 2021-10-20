@@ -12,6 +12,7 @@
             <RowDefinition Height="30" />
             <RowDefinition Height="*" />
             <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10"/>
@@ -39,7 +40,10 @@
 
         <DataGrid Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Name="Language_DataGrid" />
 
-        <Button Grid.Row="3" Grid.Column="1" Click="ViewReportButton_Click">View Report</Button>
-        <Button Grid.Row="3" Grid.Column="2" Click="CancelButton_Click">Cancel</Button>
+        <TextBox Grid.Row="3" Grid.Column="1">Total hours</TextBox>
+        <TextBlock Grid.Row="3" Grid.Column="2" Name="Total_Hours_Box" />
+
+        <Button Grid.Row="4" Grid.Column="1" Click="ViewReportButton_Click">View Report</Button>
+        <Button Grid.Row="4" Grid.Column="2" Click="CancelButton_Click">Cancel</Button>
     </Grid>
 </Window>

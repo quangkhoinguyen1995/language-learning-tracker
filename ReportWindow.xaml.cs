@@ -20,6 +20,7 @@ namespace language_learning_tracker
     /// </summary>
     public partial class ReportWindow : Window
     {
+        private string Total_Hours_Box_String = "None";
         private List<LanguageList> Language_List;
         private LanguageDataDbContext LanguageDataContext;
         public ReportWindow()
@@ -30,6 +31,9 @@ namespace language_learning_tracker
             End_Date.SelectedDate = DateTime.Today;
             Language_List = LanguageDataContext.Language.ToList();
             Language_Name.ItemsSource = Language_List.Select(s => s.LanguageName);
+            Binding Total_Hours_Box_Binding = new Binding();
+            Total_Hours_Box_Binding.Source = Total_Hours_Box_String;
+            Total_Hours_Box.SetBinding(TextBlock.TextProperty, Total_Hours_Box_Binding);
         }
 
         private void ViewReportButton_Click(object sender, RoutedEventArgs e)
