@@ -61,10 +61,19 @@ namespace language_learning_tracker
 
         private void ReportButton_Click (object sender, RoutedEventArgs e)
         {
-            ReportWindow reportWindow = new ReportWindow();
+            LanguageDataDbContext LanguageDataContext = new LanguageDataDbContext();
+            int langCount = LanguageDataContext.Language.Count();
+            LanguageDataContext.Dispose();
 
-            //Open the window
-            reportWindow.Show();
+            if (langCount == 0)
+                MessageBox.Show("Language data is empty! Add language before proceeding!");
+            else
+            {
+                ReportWindow reportWindow = new ReportWindow(); ;
+
+                //Open the window
+                reportWindow.Show();
+            }
         }
 
         private void AddLanguageButton_Click(object sender, RoutedEventArgs e)

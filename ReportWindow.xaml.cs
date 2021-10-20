@@ -60,7 +60,7 @@ namespace language_learning_tracker
                 on LanguageActivity.MediaID equals ImmersionMedia.MediaID
                 where LanguageList.LanguageName == selectedLanguage && LanguageActivity.ActivityDate >= startDate
                 && LanguageActivity.ActivityDate <= endDate
-                orderby LanguageActivity.ActivityDate
+                orderby LanguageActivity.ActivityDate, LanguageActivity.ActivityType
                 select new { LanguageList.LanguageName, LanguageActivity.ActivityDate, ImmersionMedia.MediaName, ImmersionMedia.MediaType, LanguageActivity.ActivityType, LanguageActivity.TimeTaken };
 
             var ActivityList = report.ToList();
